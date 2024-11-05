@@ -32,7 +32,7 @@ resource "azurerm_virtual_network_peering" "hub" {
 }
 
 resource "azurerm_virtual_network_peering" "spoke" {
-  name                      = "peer2to1"
+  name                      = "peer-spoke-to-hub"
   resource_group_name       = azurerm_resource_group.spoke.name
   virtual_network_name      = azurerm_virtual_network.spoke.name
   remote_virtual_network_id = azurerm_virtual_network.hub.id
@@ -49,5 +49,5 @@ resource "azurerm_subnet" "vm_spoke" {
   name                 = "subnet-private"
   resource_group_name  = azurerm_resource_group.hub.name
   virtual_network_name = azurerm_virtual_network.hub.name
-  address_prefixes     = ["10.1s.1.0/24"]
+  address_prefixes     = ["10.2.2.0/24"]
 }
