@@ -17,3 +17,7 @@ resource "azurerm_route_table" "rt" {
     }
   )
 }
+resource "azurerm_subnet_route_table_association" "rt" {
+  subnet_id      = azurerm_subnet.vm_spoke.id
+  route_table_id = azurerm_route_table.rt.id
+}
